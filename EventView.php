@@ -9,6 +9,11 @@ class EventView {
 	}
 
 	public function output() {
-		return $this->event->getEventName();
+		$output = $this->event->getEventName() . "</br>" . 
+			$this->event->getDescription() . "</br>" .
+			$this->event->getCategory() . "</br>" .
+			$this->event->getStartTime() . "</br>" .
+			$this->event->getEndTime() . "</br>";
+		return $output;
 	}
 }
