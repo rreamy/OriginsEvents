@@ -1,0 +1,5 @@
+<?php
+$model = new EventModel();
+$controller = new EventController($model);
+$view = new EventView($controller, $event);
+echo $view->output();
