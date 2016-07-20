@@ -5,4 +5,5 @@ class EventController {
 	public function __construct($event) {
 		$this->event = $event;
 	}
+
 }
