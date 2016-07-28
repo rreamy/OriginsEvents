@@ -10,7 +10,8 @@ class EventController {
 	}
 
 	public function getFullEventList() {
-		$this->eventDao->getFullEventList();
+		$eventList = $this->eventDao->getFullEventList();
+		print $eventList;
 		return "{}";
 	}
 }

@@ -1,17 +1,17 @@
 <?php
-class Events {
+class Event {
 	private $eventName;
 	private $description;
 	private $category;
 	private $startTime;
-	private $endTime;
+	private $duration;
 
-	public function __construct($eventName, $description, $category, $startTime, $endTime) {
+	public function __construct($eventName, $description, $category, $startTime, $duration) {
 		$this->eventName = $eventName;
 		$this->description = $description;
 		$this->category = $category;
 		$this->startTime = $startTime;
-		$this->endTime = $endTime;
+		$this->duration = $duration;
 	}
 
 	public function setEventName($eventName) {
@@ -46,11 +46,11 @@ class Events {
 		return $this->startTime;
 	}
 
-	public function setEndTime($endTime) {
-		$this->endTime = $endTime;
+	public function setDuration($duration) {
+		$this->endTime = $duration;
 	}
 
-	public function getEndTime() {
-		return $this->endTime;
+	public function getDuration() {
+		return $this->duration;
 	}
 }

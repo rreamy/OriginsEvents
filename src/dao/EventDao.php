@@ -1,4 +1,6 @@
 <?php
+include_once('../models/Event.php');
+
 class EventDao {
 	
 	private $server;
@@ -15,10 +17,21 @@ class EventDao {
 	
 	
 	public function getFullEventList() {
+		$eventList = array();
 		$conn = mysqli_connect($this->server, $this->username, $this->password, $this->dbName);
 		if (!$conn) {
-			die("Connection failed: " . mysqli_connect_error());
+			return null;
 		}
-		print "successfully connected";
+		
+		$sql = "select name, description, category, start_date_time, duration from event_list";
+		if(!$result = $conn->query($sql)) {
+			return null;
+		}
+		while($row = $result->fetch_assoc()) {
+			$event = new Event($row['name'], $row['description'], $row['category'], $row['start_date_time'], $row['duration']);
+			$eventList[] = $event;
+		}
+		
+		return $eventList;
 	}
 }
