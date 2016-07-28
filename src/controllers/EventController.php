@@ -1,9 +1,19 @@
 <?php
-class EventController {
-	private $event;
+include_once('../dao/EventDao.php');
 
-	public function __construct($event) {
-		$this->event = $event;
+class EventController {
+	
+	private $eventDao;
+
+	public function __construct() {
+		$this->eventDao = new EventDao();
 	}
 
+	public function getFullEventList() {
+		$this->eventDao->getFullEventList();
+		return "{}";
+	}
 }
+
+$eventController = new EventController();
+$eventController->getFullEventList();
