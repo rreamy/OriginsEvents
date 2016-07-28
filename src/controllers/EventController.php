@@ -11,7 +11,7 @@ class EventController {
 
 	public function getFullEventList() {
 		$eventList = $this->eventDao->getFullEventList();
-		print $eventList;
+		print json_encode($eventList);
 		return "{}";
 	}
 }
