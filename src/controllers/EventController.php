@@ -1,5 +1,5 @@
 <?php
-include_once('../dao/EventDao.php');
+include_once(__DIR__.'/../dao/EventDao.php');
 
 class EventController {
 	
