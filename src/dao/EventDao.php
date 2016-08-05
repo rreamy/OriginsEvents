@@ -17,13 +17,23 @@ class EventDao {
 	
 	
 	public function getFullEventList() {
+		$sql = "select name, description, category, start_date_time, duration from event_list";
+		return $this->getEvents($sql);
+	}
+	
+	public function getEventsByEventType($eventType) {
+		$sql = "select name, description, category, start_date_time, duration"
+				. " from event_list where category=". $eventType;
+		return $this->getEvents($sql);
+	}
+	
+	private function getEvents($sql) {
 		$eventList = array();
 		$conn = mysqli_connect($this->server, $this->username, $this->password, $this->dbName);
 		if (!$conn) {
 			return null;
 		}
 		
-		$sql = "select name, description, category, start_date_time, duration from event_list";
 		if(!$result = $conn->query($sql)) {
 			return null;
 		}
@@ -31,7 +41,7 @@ class EventDao {
 			$event = new Event($row['name'], $row['description'], $row['category'], $row['start_date_time'], $row['duration']);
 			$eventList[] = $event;
 		}
-		
+
 		return $eventList;
 	}
 }
